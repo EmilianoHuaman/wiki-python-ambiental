@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Wiki educativo de Python aplicado a la Ingeniería Ambiental">
+<title>Python Ambiental | Wiki de Ingeniería Ambiental</title>
+<style>
+:root{--forest:#123b31;--green:#1d6b50;--mint:#dff3e8;--lime:#b8df91;--ink:#19312b;--muted:#61746c;--paper:#f6faf7;--white:#fff;--line:#dce9e0;--shadow:0 12px 35px rgba(18,59,49,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
+a{color:inherit}.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1160px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850;color:var(--forest);letter-spacing:-.4px}.brand-mark{width:38px;height:38px;border-radius:12px;background:var(--forest);color:white;display:grid;place-items:center;font-size:20px}.navlinks{display:flex;gap:19px;align-items:center;flex-wrap:wrap}.navlinks a{text-decoration:none;color:#496057;font-size:.9rem;font-weight:650}.navlinks a:hover{color:var(--green)}.menu{display:none;border:0;background:var(--mint);padding:9px 12px;border-radius:10px;font-size:1.1rem}
+.hero{background:radial-gradient(circle at 80% 20%,#39795e 0,transparent 30%),linear-gradient(120deg,#10392f,#1b6048 65%,#286d4e);color:white;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.15);border-radius:50%;right:-100px;bottom:-250px;box-shadow:0 0 0 45px rgba(255,255,255,.035),0 0 0 95px rgba(255,255,255,.025)}
+.hero-inner{max-width:1160px;margin:auto;padding:86px 22px 82px;display:grid;grid-template-columns:1.15fr .85fr;gap:45px;align-items:center;position:relative;z-index:1}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.09);padding:7px 12px;border-radius:99px;font-size:.82rem;font-weight:700;color:#e4f4e9}.hero h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.02;letter-spacing:-2.8px;margin:22px 0}.hero h1 span{color:var(--lime)}.hero p{max-width:610px;color:#d7e9df;font-size:1.08rem}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:800;border:1px solid transparent;cursor:pointer;font:inherit;font-weight:750}.btn-primary{background:var(--lime);color:#173c2d}.btn-ghost{border-color:rgba(255,255,255,.35);color:white;background:transparent}.hero-art{min-height:300px;display:grid;place-items:center}.orbit{width:min(340px,75vw);aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;position:relative;background:radial-gradient(circle,rgba(197,230,168,.18),transparent 62%)}.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.2);border-radius:50%;inset:28px}.orbit:after{inset:65px}.planet{width:125px;height:125px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#c8eaa2,#69ae72);color:#153e2e;font-size:54px;box-shadow:0 0 55px rgba(184,223,145,.25);z-index:2}.float{position:absolute;background:#fff;color:var(--forest);padding:10px 14px;border-radius:13px;font-weight:800;box-shadow:var(--shadow);font-size:.9rem}.f1{top:35px;left:0}.f2{right:-12px;top:105px}.f3{bottom:28px;left:30px}
+main{max-width:1160px;margin:auto;padding:0 22px}.section{padding:68px 0;scroll-margin-top:80px}.section-head{max-width:720px;margin-bottom:28px}.kicker{color:var(--green);font-size:.78rem;text-transform:uppercase;letter-spacing:1.7px;font-weight:850}.section h2{font-size:clamp(1.8rem,4vw,2.7rem);letter-spacing:-1.1px;line-height:1.15;margin:8px 0 12px;color:var(--forest)}.section-head p,.muted{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 5px 20px rgba(18,59,49,.035)}.card-icon{width:45px;height:45px;border-radius:13px;background:var(--mint);display:grid;place-items:center;font-size:22px;margin-bottom:14px}.card h3{margin:0 0 7px;color:var(--forest)}.card p{margin:0;color:var(--muted);font-size:.94rem}.tag{display:inline-block;background:#edf6ef;color:#276044;padding:4px 9px;border-radius:99px;font-size:.75rem;font-weight:750;margin:4px 4px 0 0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:24px}.panel h3{margin-top:0;color:var(--forest)}.steps{padding-left:20px}.steps li{padding:5px 0}.codebox{background:#10251f;color:#d7f2df;border-radius:15px;overflow:hidden;margin:16px 0}.codehead{padding:10px 15px;background:#1a3a30;display:flex;justify-content:space-between;align-items:center;color:#c5dfcf;font-size:.82rem}.codebox pre{margin:0;padding:18px;overflow:auto;font: .88rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre}.copy{border:1px solid #5b806d;background:transparent;color:#e5f4e9;border-radius:8px;padding:5px 9px;cursor:pointer}.note{background:#eff8f0;border-left:4px solid #65a878;padding:13px 16px;border-radius:0 12px 12px 0;color:#365847;margin:15px 0}
+table{width:100%;border-collapse:collapse;background:white;border-radius:13px;overflow:hidden}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}th{background:#eaf5ed;color:var(--forest);font-size:.88rem}td{font-size:.92rem}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:13px}
+.demo{background:#10251f;border-radius:18px;padding:22px;color:#e4f4e9}.demo label{display:block;font-weight:700;margin:10px 0 5px}.demo input,.demo select{width:100%;padding:11px;border-radius:9px;border:1px solid #5a7968;background:#f7fbf8;color:#18382b;font:inherit}.demo button{margin-top:14px;background:var(--lime);color:#173c2d;border:0;padding:11px 16px;border-radius:10px;font-weight:850;cursor:pointer}.result{background:#1d3c31;padding:14px;border-radius:10px;margin-top:14px;min-height:48px;color:#d9f1df}
+.exercise{border:1px solid var(--line);background:#fff;border-radius:15px;padding:18px;margin:12px 0}.exercise summary{cursor:pointer;font-weight:800;color:var(--forest)}.exercise p{color:var(--muted)}.answer{background:#f0f7f1;padding:12px;border-radius:10px;font-size:.92rem}
+.references a{color:var(--green);font-weight:700}.footer{background:#102f27;color:#d6e8dc;margin-top:40px}.footer-inner{max-width:1160px;margin:auto;padding:34px 22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer small{color:#a9c7b5}
+@media(max-width:800px){.hero-inner{grid-template-columns:1fr;padding-top:60px}.hero-art{min-height:260px}.cards{grid-template-columns:1fr 1fr}.split{grid-template-columns:1fr}.navlinks{display:none;position:absolute;top:62px;left:0;right:0;background:white;padding:18px 22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu{display:block}}
+@media(max-width:540px){.cards{grid-template-columns:1fr}.hero h1{letter-spacing:-1.5px}.section{padding:48px 0}.hero-inner{gap:5px}.orbit{width:270px}.float{font-size:.78rem}}
+</style>
+</head>
+<body>
+<header class="topbar">
+ <nav class="nav">
+  <a class="brand" href="#inicio"><span class="brand-mark">🌿</span><span>PYTHON <span style="color:#4a9369">AMBIENTAL</span></span></a>
+  <button class="menu" aria-label="Abrir menú" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+  <div class="navlinks">
+   <a href="#introduccion">Introducción</a><a href="#fundamentos">Fundamentos</a><a href="#datos">Datos</a><a href="#visualizacion">Gráficos</a><a href="#aplicaciones">Aplicaciones</a><a href="#practica">Practica</a>
+  </div>
+ </nav>
+</header>
+<section class="hero" id="inicio">
+ <div class="hero-inner">
+  <div>
+   <span class="eyebrow">🌎 WIKI EDUCATIVO · INGENIERÍA AMBIENTAL</span>
+   <h1>Aprende Python.<br><span>Cuida el planeta.</span></h1>
+   <p>Un espacio práctico para aprender programación y aplicarla al análisis de datos de aire, agua, suelo y gestión de residuos. Desde los primeros pasos hasta pequeños proyectos ambientales.</p>
+   <div class="actions"><a class="btn btn-primary" href="#introduccion">Explorar el Wiki →</a><a class="btn btn-ghost" href="#practica">Probar un ejercicio</a></div>
+  </div>
+  <div class="hero-art" aria-label="Ilustración de naturaleza y tecnología"><div class="orbit"><div class="planet">🌱</div><span class="float f1">🐍 Python</span><span class="float f2">📊 Datos</span><span class="float f3">💧 Ambiente</span></div></div>
+ </div>
+</section>
+<main>
+<section class="section" id="introduccion">
+ <div class="section-head"><span class="kicker">01 · Conoce la herramienta</span><h2>¿Qué es Python y por qué usarlo?</h2><p>Python es un lenguaje de programación de alto nivel, conocido por su sintaxis legible y su amplia variedad de bibliotecas. En Ingeniería Ambiental ayuda a organizar datos, automatizar cálculos, crear gráficos y explorar información para apoyar decisiones.</p></div>
+ <div class="cards">
+  <article class="card"><div class="card-icon">🐍</div><h3>Fácil de aprender</h3><p>Su sintaxis clara permite comenzar con variables, operaciones y estructuras básicas.</p></article>
+  <article class="card"><div class="card-icon">📈</div><h3>Análisis de datos</h3><p>Procesa registros de monitoreo, resultados de laboratorio y series meteorológicas.</p></article>
+  <article class="card"><div class="card-icon">🌍</div><h3>Aplicación ambiental</h3><p>Apoya el estudio de la calidad ambiental y la comunicación de resultados.</p></article>
+ </div>
+ <div class="note"><strong>Herramienta recomendada para empezar:</strong> Google Colab permite escribir y ejecutar Python desde el navegador, sin instalarlo en la computadora.</div>
+ <p><a href="https://colab.research.google.com/" target="_blank" rel="noopener">Abrir Google Colab ↗</a></p>
+</section>
+<section class="section" id="fundamentos">
+ <div class="section-head"><span class="kicker">02 · Primeros pasos</span><h2>Fundamentos de Python</h2><p>Aprende los elementos esenciales de programación mediante ejemplos sencillos relacionados con mediciones ambientales.</p></div>
+ <div class="split">
+  <div class="panel"><h3>Variables y tipos de datos</h3><p>Una variable almacena un dato que puede utilizarse durante el programa.</p><div class="codebox"><div class="codehead"><span>Ejemplo · variables.py</span><button class="copy" onclick="copyCode(this)">Copiar</button></div><pre><code># Datos de una muestra de agua
+temperatura = 18.5
+ph = 7.2
+lugar = "Río Vilcanota"
+muestra_aprobada = True
+
+print("Lugar:", lugar)
+print("Temperatura:", temperatura, "°C")
+print("pH:", ph)</code></pre></div><p><span class="tag">float</span><span class="tag">str</span><span class="tag">bool</span><span class="tag">int</span></p><p class="muted">Aplicación: guardar resultados de campo o laboratorio con sus unidades.</p></div>
+  <div class="panel"><h3>Condicionales y ciclos</h3><p>Los condicionales permiten tomar decisiones; los ciclos repiten instrucciones.</p><div class="codebox"><div class="codehead"><span>Ejemplo · control.py</span><button class="copy" onclick="copyCode(this)">Copiar</button></div><pre><code>ph = 5.2
+
+if ph < 6.5:
+    print("Muestra ácida")
+elif ph <= 8.5:
+    print("Dentro del intervalo ilustrativo")
+else:
+    print("Muestra alcalina")
+
+temperaturas = [15, 17, 19]
+for valor in temperaturas:
+    print(valor, "°C")</code></pre></div><p class="muted">Aplicación: revisar muchos registros y clasificarlos según criterios definidos.</p></div>
+ </div>
+ <div class="note">El intervalo de pH del ejemplo es didáctico. La evaluación normativa del agua depende de su uso, categoría y regulación aplicable.</div>
+</section>
+<section class="section" id="datos">
+ <div class="section-head"><span class="kicker">03 · Organiza información</span><h2>Manejo de datos ambientales</h2><p>Los archivos CSV y Excel suelen contener registros de monitoreo. La biblioteca Pandas permite leerlos, ordenarlos y calcular estadísticas descriptivas.</p></div>
+ <div class="split">
+  <div class="panel"><h3>Leer un archivo CSV</h3><div class="codebox"><div class="codehead"><span>lectura_csv.py</span><button class="copy" onclick="copyCode(this)">Copiar</button></div><pre><code>import pandas as pd
+
+datos = pd.read_csv("monitoreo.csv")
+
+print(datos.head())
+print(datos.describe())
+print(datos.isnull().sum())</code></pre></div><h3>Leer un archivo Excel</h3><div class="codebox"><div class="codehead"><span>lectura_excel.py</span><button class="copy" onclick="copyCode(this)">Copiar</button></div><pre><code>import pandas as pd
+
+datos = pd.read_excel("monitoreo.xlsx")
+print(datos.head())</code></pre></div></div>
+  <div class="panel"><h3>Ejemplo de una tabla ambiental</h3><div class="table-wrap"><table><thead><tr><th>Mes</th><th>Temperatura °C</th><th>Lluvia mm</th></tr></thead><tbody><tr><td>Enero</td><td>14.0</td><td>150</td></tr><tr><td>Febrero</td><td>14.5</td><td>130</td></tr><tr><td>Marzo</td><td>14.0</td><td>110</td></tr><tr><td>Abril</td><td>13.0</td><td>50</td></tr><tr><td>Mayo</td><td>12.0</td><td>10</td></tr></tbody></table></div><p class="muted">Datos ficticios de demostración. Antes de analizarlos, revisa unidades, fechas, valores faltantes y procedencia.</p><div class="codebox"><div class="codehead"><span>promedio.py</span><button class="copy" onclick="copyCode(this)">Copiar</button></div><pre><code>temperaturas = [14, 14.5, 14, 13, 12]
+promedio = sum(temperaturas) / len(temperaturas)
+print("Promedio:", promedio, "°C")</code></pre></div></div>
+ </div>
+</section>
+<section class="section" id="visualizacion">
+ <div class="section-head"><span class="kicker">04 · Comunica resultados</span><h2>Análisis y visualización</h2><p>Los gráficos ayudan a reconocer patrones, comparar periodos e identificar valores máximos y mínimos. Matplotlib es una biblioteca muy utilizada para crear visualizaciones en Python.</p></div>
+ <div class="split">
+  <div class="panel"><h3>Gráfico de temperatura</h3><div class="codebox"><div class="codehead"><span>grafico.py</span><button class="copy" onclick="copyCode(this)">Copiar</button></div><pre><code>import matplotlib.pyplot as plt
+
+meses = ["Ene", "Feb", "Mar", "Abr"]
+temperaturas = [14, 14.5, 14, 13]
+
+plt.plot(meses, temperaturas, marker="o")
+plt.title("Temperatura mensual")
+plt.xlabel("Mes")
+plt.ylabel("Temperatura (°C)")
+plt.grid(True)
+plt.show()</code></pre></div></div>
+  <div class="panel"><h3>¿Cómo interpretar?</h3><ul class="steps"><li>Identifica la tendencia general: aumenta, disminuye o se mantiene.</li><li>Ubica los valores máximos y mínimos.</li><li>Compara periodos equivalentes.</li><li>Revisa unidades, escala y calidad de los datos.</li><li>Explica qué significa el patrón en el contexto ambiental.</li></ul><div class="note">Un gráfico muestra patrones, pero por sí solo no demuestra la causa de un cambio ambiental.</div></div>
+ </div>
+</section>
+<section class="section" id="aplicaciones">
+ <div class="section-head"><span class="kicker">05 · Python en acción</span><h2>Aplicaciones ambientales</h2><p>La programación puede apoyar distintas áreas de la Ingeniería Ambiental. Cada análisis debe utilizar datos confiables y criterios técnicos adecuados.</p></div>
+ <div class="cards">
+  <article class="card"><div class="card-icon">🌫️</div><h3>Calidad del aire</h3><p>Analizar series de PM₂.₅, PM₁₀ y gases contaminantes, comparar estaciones y visualizar variaciones temporales.</p><span class="tag">PM2.5</span><span class="tag">PM10</span><span class="tag">NO₂</span></article>
+  <article class="card"><div class="card-icon">💧</div><h3>Calidad del agua</h3><p>Organizar resultados de pH, turbidez, conductividad, oxígeno disuelto y otros parámetros de monitoreo.</p><span class="tag">pH</span><span class="tag">Turbidez</span><span class="tag">OD</span></article>
+  <article class="card"><div class="card-icon">♻️</div><h3>Gestión de residuos</h3><p>Calcular generación, composición, porcentajes de segregación y tasas de reciclaje.</p><span class="tag">kg/día</span><span class="tag">Reciclaje</span></article>
+  <article class="card"><div class="card-icon">🌱</div><h3>Suelo</h3><p>Procesar resultados de pH, humedad, materia orgánica y otros parámetros del suelo.</p><span class="tag">pH</span><span class="tag">Humedad</span></article>
+  <article class="card"><div class="card-icon">🌦️</div><h3>Climatología</h3><p>Explorar datos de temperatura, precipitación y humedad para estudiar variaciones estacionales.</p><span class="tag">Temperatura</span><span class="tag">Precipitación</span></article>
+  <article class="card"><div class="card-icon">📊</div><h3>Indicadores ambientales</h3><p>Calcular indicadores como consumo de agua por persona o porcentaje de residuos aprovechados.</p><span class="tag">Indicadores</span><span class="tag">Sostenibilidad</span></article>
+ </div>
+</section>
+<section class="section" id="practica">
+ <div class="section-head"><span class="kicker">06 · Laboratorio de aprendizaje</span><h2>Practica con datos ambientales</h2><p>Modifica los valores y observa cómo cambia el resultado. Esta pequeña calculadora demuestra la lógica de un programa Python.</p></div>
+ <div class="split">
+  <div class="demo"><h3 style="color:#dff3e8;margin-top:0">Calculadora de reciclaje ♻️</h3><label for="generated">Residuos generados (kg)</label><input id="generated" type="number" min="0" step="0.1" value="200"><label for="recycled">Residuos reciclados (kg)</label><input id="recycled" type="number" min="0" step="0.1" value="80"><button onclick="calculate()">Calcular porcentaje</button><div class="result" id="calcResult" aria-live="polite">El porcentaje de reciclaje aparecerá aquí.</div></div>
+  <div class="panel"><h3>¿Qué hace el programa?</h3><div class="codebox"><div class="codehead"><span>indicador.py</span><button class="copy" onclick="copyCode(this)">Copiar</button></div><pre><code>generados = 200
+reciclados = 80
+
+if generados > 0:
+    porcentaje = (reciclados / generados) * 100
+    print(porcentaje, "%")
+else:
+    print("Revisa los datos")</code></pre></div><p class="muted">Con los valores iniciales, el resultado es 40 %. La calculadora de esta página ejecuta la misma operación en el navegador mediante JavaScript; el código Python se muestra para que puedas reproducirlo en Google Colab.</p></div>
+ </div>
+ <h3 style="color:var(--forest);margin-top:35px">Ejercicios de autoevaluación</h3>
+ <details class="exercise"><summary>Ejercicio 1 · Variables</summary><p>Crea tres variables: temperatura = 16.5, humedad = 60 y localidad = "Cusco". Muestra sus valores con print().</p><div class="answer"><strong>Solución orientativa:</strong><br><code>temperatura = 16.5<br>humedad = 60<br>localidad = "Cusco"<br>print(temperatura, humedad, localidad)</code></div></details>
+ <details class="exercise"><summary>Ejercicio 2 · Promedio de pH</summary><p>Calcula el promedio de estas mediciones: 7.1, 6.8, 7.4 y 7.0.</p><div class="answer"><strong>Resultado:</strong> 7.075. Puedes usar <code>sum(valores) / len(valores)</code>.</div></details>
+ <details class="exercise"><summary>Ejercicio 3 · Residuos reciclados</summary><p>Una institución genera 150 kg de residuos y recicla 45 kg. ¿Qué porcentaje representa?</p><div class="answer"><strong>Resultado:</strong> 30 %. Operación: (45 / 150) × 100.</div></details>
+ <details class="exercise"><summary>Ejercicio 4 · Gráfico de precipitación</summary><p>Registra la precipitación de cinco meses y elabora un gráfico de barras con Matplotlib. Identifica el mes más lluvioso.</p><div class="answer"><strong>Pista:</strong> utiliza <code>plt.bar(meses, precipitacion)</code> y agrega título y unidades a los ejes.</div></details>
+</section>
+<section class="section references" id="referencias">
+ <div class="section-head"><span class="kicker">07 · Sigue aprendiendo</span><h2>Referencias y recursos</h2><p>Consulta la documentación oficial para ampliar los conceptos y verificar el uso de las bibliotecas.</p></div>
+ <div class="panel">
+  <ol class="steps">
+   <li>Python Software Foundation. <a href="https://docs.python.org/3/" target="_blank" rel="noopener">Documentación oficial de Python ↗</a></li>
+   <li>pandas. <a href="https://pandas.pydata.org/docs/" target="_blank" rel="noopener">Documentación de Pandas ↗</a></li>
+   <li>NumPy. <a href="https://numpy.org/doc/" target="_blank" rel="noopener">Documentación de NumPy ↗</a></li>
+   <li>Matplotlib. <a href="https://matplotlib.org/stable/" target="_blank" rel="noopener">Documentación de Matplotlib ↗</a></li>
+   <li>Google. <a href="https://colab.research.google.com/" target="_blank" rel="noopener">Google Colaboratory ↗</a></li>
+  </ol>
+  <p class="muted">Los ejemplos y datos demostrativos de este Wiki tienen finalidad educativa. Para informes técnicos, utiliza datos trazables, métodos documentados y normativa vigente aplicable.</p>
+ </div>
+</section>
+<section class="section" id="acerca">
+ <div class="section-head"><span class="kicker">08 · Propósito del Wiki</span><h2>Aprendizaje colaborativo y mejora continua</h2><p>Este espacio está dirigido a estudiantes, docentes y egresados de Ingeniería Ambiental. Su contenido puede revisarse semestralmente, validarse por docentes y ampliarse con aportes de la comunidad académica.</p></div>
+ <div class="cards">
+  <article class="card"><div class="card-icon">🧭</div><h3>Aprendizaje progresivo</h3><p>Comenzar por conceptos sencillos y avanzar hacia aplicaciones ambientales.</p></article>
+  <article class="card"><div class="card-icon">🤝</div><h3>Colaboración</h3><p>Promover aportes de estudiantes y docentes con revisión antes de publicar.</p></article>
+  <article class="card"><div class="card-icon">🔎</div><h3>Calidad y ética</h3><p>Usar lenguaje claro, código comentado, fuentes citadas y datos identificados.</p></article>
+ </div>
+</section>
+</main>
+<footer class="footer"><div class="footer-inner"><div><strong>🌿 PYTHON AMBIENTAL</strong><br><small>Programación al servicio del ambiente.</small></div><div><small>Recurso educativo · Ingeniería Ambiental</small><br><small>Contenido demostrativo para aprendizaje.</small></div></div></footer>
+<script>
+function copyCode(button){
+ const text=button.closest('.codebox').querySelector('code').innerText;
+ if(navigator.clipboard && window.isSecureContext){navigator.clipboard.writeText(text).then(()=>{button.textContent='¡Copiado!';setTimeout(()=>button.textContent='Copiar',1500)}).catch(()=>fallbackCopy(text,button))}
+ else{fallbackCopy(text,button)}
+}
+function fallbackCopy(text,button){const area=document.createElement('textarea');area.value=text;document.body.appendChild(area);area.select();try{document.execCommand('copy');button.textContent='¡Copiado!';setTimeout(()=>button.textContent='Copiar',1500)}catch(e){button.textContent='Selecciona el código'}area.remove()}
+function calculate(){
+ const generated=Number(document.getElementById('generated').value);
+ const recycled=Number(document.getElementById('recycled').value);
+ const out=document.getElementById('calcResult');
+ if(!Number.isFinite(generated)||!Number.isFinite(recycled)||generated<=0||recycled<0){out.textContent='Ingresa cantidades válidas: los residuos generados deben ser mayores que cero y los reciclados no pueden ser negativos.';return}
+ if(recycled>generated){out.textContent='Los residuos reciclados no pueden superar los residuos generados. Revisa los datos.';return}
+ const pct=(recycled/generated)*100;
+ out.textContent='Porcentaje de reciclaje: '+pct.toFixed(2)+' %. Se reciclaron '+recycled+' kg de '+generated+' kg generados.';
+}
+</script>
+</body>
+</html>
